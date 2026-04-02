@@ -1,0 +1,8 @@
+name: sabas-docs
+title: Sabas OS
+version: ~
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/contributing/nav.adoc
+  - modules/architecture/nav.adoc

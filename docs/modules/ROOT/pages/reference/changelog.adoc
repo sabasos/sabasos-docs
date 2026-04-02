@@ -1,0 +1,11 @@
+= Changelog
+:description: Sabas OS release history.
+
+== Unreleased (develop)
+
+* Initial project scaffold
+* Theme engine with border, corner radius, icon shape backdrop
+* Workspace manager with OverlayFS and snapshot support
+* Global menu daemon
+* Control Center with appearance, desktop, and workspace panels
+* Desktop experience shell extension with toolbar and panels

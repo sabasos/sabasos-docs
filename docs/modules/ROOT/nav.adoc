@@ -1,0 +1,18 @@
+* xref:index.adoc[Home]
+
+* Getting Started
+** xref:getting-started/requirements.adoc[Requirements]
+** xref:getting-started/installation.adoc[Installation]
+** xref:getting-started/first-boot.adoc[First Boot]
+
+* User Guide
+** xref:user-guide/overview.adoc[Overview]
+** xref:user-guide/control-center.adoc[Control Center]
+** xref:user-guide/workspaces.adoc[Workspaces]
+** xref:user-guide/themes.adoc[Themes & Appearance]
+** xref:user-guide/global-menu.adoc[Global Menu]
+
+* Reference
+** xref:reference/dbus-apis.adoc[D-Bus APIs]
+** xref:reference/gsettings.adoc[GSettings Schemas]
+** xref:reference/changelog.adoc[Changelog]

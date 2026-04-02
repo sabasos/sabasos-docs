@@ -1,0 +1,31 @@
+= Installation
+:description: How to install Sabas OS.
+
+== Option 1: OCI Image (Recommended)
+
+Rebase your existing Fedora Silverblue installation to the Sabas OS image:
+
+[source,bash]
+----
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/sabasos/sabas-os:latest
+----
+
+Reboot to apply:
+
+[source,bash]
+----
+systemctl reboot
+----
+
+== Option 2: Build from Source
+
+See xref:contributing:workflow.adoc[Development Workflow] for building locally.
+
+== Verifying the Installation
+
+After reboot, confirm you are running Sabas OS:
+
+[source,bash]
+----
+rpm-ostree status
+----

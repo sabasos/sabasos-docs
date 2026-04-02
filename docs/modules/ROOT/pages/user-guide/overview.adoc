@@ -1,0 +1,32 @@
+= Overview
+:description: An overview of the Sabas OS user experience.
+
+Sabas OS transforms Fedora Silverblue into a cohesive desktop experience through five tightly integrated components that communicate via D-Bus.
+
+== Architecture at a Glance
+
+[source]
+----
+┌─────────────────────────────────────────┐
+│           Sabas Desktop Experience       │  GNOME Shell Extension
+│  Toolbar · Panels · Tab System · Dock   │
+└────────────┬────────────────────────────┘
+             │ D-Bus
+┌────────────▼──────────┐  ┌──────────────────────┐
+│  Sabas Control Center  │  │  Sabas Theme Engine   │
+│  Settings · Appearance │  │  CSS · Borders · Icons│
+└────────────┬───────────┘  └──────────────────────┘
+             │ D-Bus
+┌────────────▼──────────┐  ┌──────────────────────┐
+│  Workspace Manager     │  │  Global Menu Daemon   │
+│  OverlayFS · Snapshots │  │  D-Bus · App Focus    │
+└───────────────────────┘  └──────────────────────┘
+----
+
+== Key Concepts
+
+D-Bus:: All components communicate through well-defined D-Bus interfaces, making Sabas extensible and scriptable.
+
+Immutable Base:: Built on Fedora Silverblue — the base OS is read-only and updated atomically via OCI images.
+
+Workspaces:: Each workspace is an isolated environment with its own filesystem overlay and clipboard.

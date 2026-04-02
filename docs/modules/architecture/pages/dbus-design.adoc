@@ -1,0 +1,66 @@
+= D-Bus Design
+:description: D-Bus interface specifications for Sabas OS components.
+
+All Sabas daemons register on the session bus (`org.freedesktop.DBus`).
+
+== Interface Summary
+
+[cols="2,2,2",options="header"]
+|===
+| Service | Bus Name | Object Path
+
+| Theme Engine
+| `io.sabas.ThemeEngine`
+| `/io/sabas/ThemeEngine`
+
+| Workspace Manager
+| `io.sabas.WorkspaceManager`
+| `/io/sabas/WorkspaceManager`
+
+| Global Menu
+| `io.sabas.GlobalMenu`
+| `/io/sabas/GlobalMenu`
+
+|===
+
+== Theme Engine Interface
+
+[source,xml]
+----
+<interface name="io.sabas.ThemeEngine">
+  <method name="ApplyTheme">
+    <arg name="theme_name" type="s" direction="in"/>
+  </method>
+  <method name="ResetCSS"/>
+  <signal name="ThemeChanged">
+    <arg name="theme_name" type="s"/>
+  </signal>
+</interface>
+----
+
+== Workspace Manager Interface
+
+[source,xml]
+----
+<interface name="io.sabas.WorkspaceManager">
+  <method name="CreateWorkspace">
+    <arg name="name" type="s" direction="in"/>
+    <arg name="color" type="s" direction="in"/>
+    <arg name="id" type="s" direction="out"/>
+  </method>
+  <method name="SwitchWorkspace">
+    <arg name="id" type="s" direction="in"/>
+  </method>
+  <method name="UpdateWorkspace">
+    <arg name="id" type="s" direction="in"/>
+    <arg name="name" type="s" direction="in"/>
+    <arg name="color" type="s" direction="in"/>
+  </method>
+  <signal name="WorkspaceChanged">
+    <arg name="id" type="s"/>
+  </signal>
+  <signal name="WorkspaceUpdated">
+    <arg name="id" type="s"/>
+  </signal>
+</interface>
+----

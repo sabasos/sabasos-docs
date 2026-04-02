@@ -1,0 +1,47 @@
+site:
+  title: Sabas OS
+  url: https://sabasos.github.io
+  start_page: sabas-docs::index.adoc
+  robots: allow
+  keys:
+    google-analytics: ~
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD]
+      start_path: docs
+    # Uncomment each repo as you add docs/ to them
+    # - url: https://github.com/sabasos/sabas-os
+    #   branches: [develop]
+    #   start_path: docs
+    # - url: https://github.com/sabasos/sabas-control-center
+    #   branches: [develop]
+    #   start_path: docs
+    # - url: https://github.com/sabasos/sabas-desktop-experience
+    #   branches: [develop]
+    #   start_path: docs
+    # - url: https://github.com/sabasos/sabas-theme-engine
+    #   branches: [develop]
+    #   start_path: docs
+    # - url: https://github.com/sabasos/sabas-workspace-manager
+    #   branches: [develop]
+    #   start_path: docs
+    # - url: https://github.com/sabasos/sabas-global-menu-daemon
+    #   branches: [develop]
+    #   start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+    experimental: ''
+    source-highlighter: highlight.js
+
+output:
+  dir: ./build/site

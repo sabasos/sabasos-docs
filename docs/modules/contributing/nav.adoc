@@ -1,0 +1,5 @@
+* Contributing
+** xref:contributing:index.adoc[How to Contribute]
+** xref:contributing:workflow.adoc[Development Workflow]
+** xref:contributing:coding-style.adoc[Coding Style]
+** xref:contributing:commit-messages.adoc[Commit Messages]

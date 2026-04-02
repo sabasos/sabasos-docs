@@ -1,0 +1,47 @@
+= How to Contribute
+:description: Guide for contributing to Sabas OS.
+
+Sabas OS follows a fork-based contribution model — the same workflow used by most professional open source projects.
+
+== Quick Start
+
+. Fork the relevant repo from `github.com/sabasos`
+. Clone your fork locally
+. Create a feature branch
+. Make your changes
+. Push to your fork and open a Pull Request to `sabasos:develop`
+
+See xref:workflow.adoc[Development Workflow] for the full guide.
+
+== Repositories
+
+[cols="1,3",options="header"]
+|===
+| Repository | Purpose
+
+| https://github.com/sabasos/sabas-os[sabas-os]
+| OS image definition and CI/CD
+
+| https://github.com/sabasos/sabas-control-center[sabas-control-center]
+| GTK4/Libadwaita settings application
+
+| https://github.com/sabasos/sabas-desktop-experience[sabas-desktop-experience]
+| GNOME shell extension
+
+| https://github.com/sabasos/sabas-theme-engine[sabas-theme-engine]
+| Theme compilation engine (Vala)
+
+| https://github.com/sabasos/sabas-workspace-manager[sabas-workspace-manager]
+| Workspace manager daemon (Vala)
+
+| https://github.com/sabasos/sabas-global-menu-daemon[sabas-global-menu-daemon]
+| Global menu daemon (Vala)
+
+| https://github.com/sabasos/sabas-docs[sabas-docs]
+| This documentation site
+
+|===
+
+== Code of Conduct
+
+Be respectful. We follow the https://www.contributor-covenant.org/[Contributor Covenant].

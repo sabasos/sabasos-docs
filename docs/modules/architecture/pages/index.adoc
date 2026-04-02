@@ -1,0 +1,18 @@
+= Architecture Overview
+:description: High-level architecture of Sabas OS.
+
+Sabas OS is composed of several independent components that communicate through D-Bus session bus interfaces.
+
+== Design Principles
+
+Separation of concerns:: Each component has a single responsibility and exposes a clean D-Bus interface.
+
+No tight coupling:: Components discover each other at runtime via D-Bus — none link directly.
+
+Immutable OS base:: The Fedora Silverblue OCI image is the stable foundation. All Sabas components run in userspace.
+
+== Component Map
+
+See xref:components.adoc[Components] for details on each component.
+
+See xref:dbus-design.adoc[D-Bus Design] for interface specifications.

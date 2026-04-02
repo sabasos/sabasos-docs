@@ -1,0 +1,50 @@
+= Commit Messages
+:description: Commit message conventions for Sabas OS.
+
+Sabas OS uses https://www.conventionalcommits.org/[Conventional Commits].
+
+== Format
+
+[source]
+----
+<type>(<scope>): <short description>
+
+<optional body>
+
+<optional footer>
+----
+
+== Types
+
+[cols="1,3",options="header"]
+|===
+| Type | When to use
+
+| `feat` | New feature
+| `fix` | Bug fix
+| `refactor` | Code change that is not a fix or feature
+| `perf` | Performance improvement
+| `chore` | Build, CI, dependencies
+| `docs` | Documentation only
+| `test` | Tests only
+| `revert` | Reverts a previous commit
+
+|===
+
+== Examples
+
+[source]
+----
+feat(theme-engine): add icon shape backdrop support
+
+fix(control-center): default border style to accent
+
+chore(ci): add parallel ninja build step
+----
+
+== Rules
+
+* Subject line max 72 characters
+* Use imperative mood: "add" not "added"
+* No AI co-author lines
+* Reference issues in footer: `Closes #42`

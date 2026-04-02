@@ -1,0 +1,26 @@
+= Requirements
+:description: System requirements for Sabas OS.
+
+== Supported Platforms
+
+* Fedora Silverblue 40+
+* Fedora Kinoite (experimental)
+
+== Minimum Hardware
+
+[cols="1,2",options="header"]
+|===
+| Component | Minimum
+
+| CPU | 64-bit dual-core, 2 GHz+
+| RAM | 4 GB (8 GB recommended)
+| Storage | 20 GB free
+| GPU | Any GPU with OpenGL 3.3 support
+
+|===
+
+== Required Software
+
+* `podman` (included with Silverblue)
+* `rpm-ostree` (included with Silverblue)
+* GNOME 46+

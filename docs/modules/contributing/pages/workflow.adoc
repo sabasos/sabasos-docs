@@ -1,0 +1,77 @@
+= Development Workflow
+:description: How to develop and contribute to Sabas OS.
+
+== Fork and Clone
+
+. Fork the repo from `github.com/sabasos/<repo>`
+. Clone your fork:
++
+[source,bash]
+----
+git clone https://github.com/sbalaji19/<repo>.git
+cd <repo>
+----
+
+. Add the upstream remote:
++
+[source,bash]
+----
+git remote add upstream https://github.com/sabasos/<repo>.git
+----
+
+== Feature Branch
+
+Always work on a feature branch — never commit directly to `develop`:
+
+[source,bash]
+----
+git checkout -b feature/my-feature
+----
+
+== Syncing with Upstream
+
+Before starting new work, sync your fork:
+
+[source,bash]
+----
+git fetch upstream
+git checkout develop
+git merge upstream/develop
+git push origin develop
+----
+
+== Opening a Pull Request
+
+. Push your branch to your fork:
++
+[source,bash]
+----
+git push origin feature/my-feature
+----
+
+. Open a PR from `youraccount:feature/my-feature` → `sabasos:develop` on GitHub
+. Fill in the PR template
+. Wait for review and merge
+
+== Branch Structure
+
+[cols="1,3",options="header"]
+|===
+| Branch | Purpose
+
+| `main`
+| Stable releases only — never commit directly
+
+| `develop`
+| Integration branch — all PRs merge here
+
+| `feature/*`
+| Feature development
+
+| `fix/*`
+| Bug fixes
+
+| `chore/*`
+| Maintenance, docs, CI changes
+
+|===

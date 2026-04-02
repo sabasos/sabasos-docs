@@ -1,0 +1,4 @@
+* Architecture
+** xref:architecture:index.adoc[Overview]
+** xref:architecture:components.adoc[Components]
+** xref:architecture:dbus-design.adoc[D-Bus Design]

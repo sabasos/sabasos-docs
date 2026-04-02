@@ -1,0 +1,39 @@
+= Sabas OS
+:description: A modern, opinionated Linux desktop experience built on Fedora Silverblue.
+
+Sabas OS is a modern Linux desktop experience built on top of Fedora Silverblue, featuring a custom GNOME shell extension, workspace manager, theme engine, and control center — all designed to work seamlessly together.
+
+== Components
+
+[cols="1,3",options="header"]
+|===
+| Component | Description
+
+| xref:user-guide/control-center.adoc[Sabas Control Center]
+| System settings and appearance configuration
+
+| xref:user-guide/workspaces.adoc[Workspace Manager]
+| Isolated workspaces with OverlayFS and clipboard isolation
+
+| xref:user-guide/themes.adoc[Theme Engine]
+| System-wide theming — borders, corners, colors, icons
+
+| xref:user-guide/global-menu.adoc[Global Menu Daemon]
+| macOS-style global menu via D-Bus
+
+| Desktop Experience
+| Custom GNOME shell extension — toolbar, panels, tab system
+
+|===
+
+== Getting Started
+
+New to Sabas OS? Start here:
+
+* xref:getting-started/requirements.adoc[Requirements]
+* xref:getting-started/installation.adoc[Installation]
+* xref:getting-started/first-boot.adoc[First Boot]
+
+== Contributing
+
+Sabas OS is developed in the open. See xref:contributing:index.adoc[How to Contribute] to get involved.

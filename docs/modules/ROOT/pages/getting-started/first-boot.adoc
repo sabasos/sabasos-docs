@@ -1,0 +1,26 @@
+= First Boot
+:description: What to expect on your first boot of Sabas OS.
+
+== What You'll See
+
+On first boot, Sabas OS automatically:
+
+* Applies the default Sabas theme
+* Enables the Desktop Experience GNOME extension
+* Starts the Workspace Manager and Global Menu daemons
+
+== Initial Setup
+
+. Open the *Sabas Control Center* from the application menu
+. Navigate to *Appearance* to customise your theme, borders, and corner radius
+. Navigate to *Workspaces* to create your first isolated workspace
+. Configure the *Global Menu* behaviour under *Desktop*
+
+== Troubleshooting
+
+If the Sabas shell extension is not active:
+
+[source,bash]
+----
+gnome-extensions enable sabas-desktop-experience@sabas.io
+----

@@ -1,0 +1,54 @@
+= Components
+:description: Detailed breakdown of each Sabas OS component.
+
+== sabas-os
+
+The OCI image definition built with https://osbuild.org/docs/user-guide/blueprint-reference/[Bootable Image Builder].
+
+* Fedora Silverblue base
+* Bundles all Sabas components as RPMs
+* CI/CD via GitHub Actions → GHCR
+
+== sabas-desktop-experience
+
+A GNOME Shell extension written in GJS providing:
+
+* Custom toolbar with app menu bridge
+* Left panel (app launcher + search)
+* Right panel (notifications + widgets)
+* Tab-based window management
+* D-Bus client for SWM, STE, and SGM
+
+== sabas-control-center
+
+A GTK4 / Libadwaita settings application written in Vala:
+
+* Appearance (theme, borders, corners, icons)
+* Desktop (layout, dock, top bar)
+* Workspaces
+* Extensions
+
+== sabas-theme-engine
+
+A Vala daemon (`io.sabas.ThemeEngine` D-Bus service) that:
+
+* Compiles a `Theme` model into GTK CSS
+* Writes CSS overrides to `~/.config/gtk-4.0/`
+* Notifies listeners on theme change
+
+== sabas-workspace-manager
+
+A Vala daemon (`io.sabas.WorkspaceManager` D-Bus service) providing:
+
+* Workspace CRUD
+* OverlayFS mount/unmount lifecycle
+* Snapshot engine (btrfs)
+* Clipboard isolation
+
+== sabas-global-menu-daemon
+
+A Vala daemon (`io.sabas.GlobalMenu` D-Bus service) providing:
+
+* App focus tracking
+* DBusMenu extraction from focused app
+* Menu caching
