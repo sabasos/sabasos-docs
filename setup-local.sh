@@ -18,59 +18,22 @@ success() { echo -e "${GREEN}[sabas-docs]${NC} $*"; }
 warn()    { echo -e "${YELLOW}[sabas-docs]${NC} $*"; }
 error()   { echo -e "${RED}[sabas-docs]${NC} $*"; exit 1; }
 
-# ─── Detect OS ────────────────────────────────────────────────────────────────
-detect_os() {
-  if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    echo "${ID:-unknown}"
-  else
-    echo "unknown"
-  fi
-}
-
-IS_IMMUTABLE=false
-OS_ID=$(detect_os)
-if [[ "$OS_ID" == "fedora" ]] && grep -q "ostree\|silverblue\|bluefin\|aurora" /etc/os-release 2>/dev/null; then
-  IS_IMMUTABLE=true
-fi
-
 # ─── Node.js installation ─────────────────────────────────────────────────────
+# Bluefin OS ships with Homebrew — it is the recommended way to install CLI tools
 ensure_node() {
   if command -v node &>/dev/null; then
-    NODE_VER=$(node --version)
-    success "Node.js already installed: $NODE_VER"
+    success "Node.js already installed: $(node --version)"
     return
   fi
 
-  info "Node.js not found. Installing..."
+  info "Node.js not found. Installing via Homebrew..."
 
-  # Bluefin/Aurora: use Homebrew (pre-installed on Bluefin)
-  if command -v brew &>/dev/null; then
-    info "Installing Node.js via Homebrew (recommended for Bluefin)..."
-    brew install node
-    success "Node.js installed via Homebrew"
-
-  # Fallback: use toolbox
-  elif command -v toolbox &>/dev/null || command -v distrobox &>/dev/null; then
-    warn "Homebrew not found. Please run inside a toolbox/distrobox container:"
-    echo ""
-    echo "  toolbox create sabas-dev"
-    echo "  toolbox enter sabas-dev"
-    echo "  sudo dnf install -y nodejs npm"
-    echo "  cd $(pwd)"
-    echo "  ./setup-local.sh"
-    echo ""
-    exit 1
-
-  # Fallback: mutable system
-  elif command -v dnf &>/dev/null; then
-    info "Installing Node.js via dnf..."
-    sudo dnf install -y nodejs npm
-    success "Node.js installed via dnf"
-
-  else
-    error "Cannot install Node.js automatically. Please install it manually:\n  https://nodejs.org"
+  if ! command -v brew &>/dev/null; then
+    error "Homebrew not found. On Bluefin, open a terminal and run:\n  /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nThen re-run this script."
   fi
+
+  brew install node
+  success "Node.js installed: $(node --version)"
 }
 
 # ─── Verify we're in the right directory ──────────────────────────────────────
