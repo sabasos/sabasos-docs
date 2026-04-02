@@ -1,0 +1,44 @@
+site:
+  title: Sabas OS (Local)
+  url: http://localhost:3000
+  start_page: sabas-docs::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD]
+      start_path: docs
+    # Uncomment as you add docs/ to each repo locally
+    # - url: ../sabas-os
+    #   branches: [HEAD]
+    #   start_path: docs
+    # - url: ../sabas-control-center
+    #   branches: [HEAD]
+    #   start_path: docs
+    # - url: ../sabas-desktop-experience
+    #   branches: [HEAD]
+    #   start_path: docs
+    # - url: ../sabas-theme-engine
+    #   branches: [HEAD]
+    #   start_path: docs
+    # - url: ../sabas-workspace-manager
+    #   branches: [HEAD]
+    #   start_path: docs
+    # - url: ../sabas-global-menu-daemon
+    #   branches: [HEAD]
+    #   start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+    experimental: ''
+    source-highlighter: highlight.js
+
+output:
+  dir: ./build/site

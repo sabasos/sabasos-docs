@@ -6,6 +6,7 @@
     "build": "antora --fetch antora-playbook.yml",
     "build:local": "antora --fetch antora-playbook-local.yml",
     "serve": "npx http-server build/site -p 3000 -o",
+    "dev": "npm run build:local && npm run serve",
     "clean": "rm -rf build"
   },
   "devDependencies": {
