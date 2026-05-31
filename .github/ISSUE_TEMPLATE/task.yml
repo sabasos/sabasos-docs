@@ -1,0 +1,117 @@
+name: Task / Chore
+description: Internal work item — refactor, infra, dependency update, or tech debt
+title: "[Task]: "
+labels: ["chore", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for internal tasks, refactors, dependency bumps, build/infra work, or tech debt.
+
+  - type: dropdown
+    id: project
+    attributes:
+      label: Affected project
+      options:
+        - sabas-os (compositor / desktop shell)
+        - sabas-live-iso (ISO builder)
+        - sabas-docs (Antora documentation)
+        - sabas-site (website)
+        - org-wide / cross-repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component / Module
+      description: Which module or area does this task target?
+      options:
+        - "sabas-os: core (event bus, layout engine, session)"
+        - "sabas-os: compositor (Wayland protocol, window management)"
+        - "sabas-os: shell (panels, overlays, app launcher)"
+        - "sabas-os: ui (widgets, TopPanel, TabBar, notifications)"
+        - "sabas-os: render-api / render-vulkan"
+        - "sabas-os: wayland-server (protocol bindings)"
+        - "sabas-os: workspace (virtual desktops)"
+        - "sabas-os: theme (tokens, layout, platform)"
+        - "sabas-os: native-bindings (JNI / DRM / libinput)"
+        - "sabas-os: desktop-portal (XDG services)"
+        - "sabas-os: plugin-api"
+        - "sabas-os: system-events (D-Bus, idle, power)"
+        - "sabas-os: global-menu"
+        - "sabas-os: apps (built-in applications)"
+        - "sabas-live-iso: iso-executor (build pipeline)"
+        - "sabas-live-iso: iso-service (build / VM test / WebUI)"
+        - "sabas-live-iso: iso-model (config, compression, VM types)"
+        - "sabas-live-iso: container/Podman build"
+        - "sabas-live-iso: WebUI / Anaconda branding"
+        - "sabas-docs: content (pages, modules, partials)"
+        - "sabas-docs: navigation (nav.adoc, antora.yml)"
+        - "sabas-docs: UI bundle / theme"
+        - "sabas-docs: build (playbook, site generation)"
+        - "sabas-site: content (pages, copy, assets)"
+        - "sabas-site: UI (styling, layout, components)"
+        - "sabas-site: build (static gen, deploy)"
+        - Build / Maven / CI
+        - All modules / org-wide
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Task type
+      options:
+        - Refactor
+        - Dependency update (Maven / Quarkus / platform BOM)
+        - Java version migration (e.g. Java 25 preview features)
+        - Native / JNI work (Panama FFI, JNI binding update)
+        - Wayland protocol update
+        - Build pipeline / Maven module restructure
+        - ISO / dracut / squashfs / boot config
+        - Performance / profiling (virtual threads, Vulkan, render)
+        - Infrastructure / DevOps / CI
+        - Tech debt cleanup
+        - Test coverage (JUnit 5, ArchUnit)
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know this task is complete?
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: flags
+    attributes:
+      label: Flags
+      options:
+        - label: Breaking change (API / ABI / protocol / build contract)
+        - label: Requires changes across multiple Maven modules
+        - label: Affects native build (GraalVM / Podman container)
+        - label: Affects ISO boot structure (isolinux / GRUB EFI / dracut)
+        - label: Affects Wayland protocol compatibility
+        - label: Requires JNI / Panama FFI changes
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / References
+      description: Links, related issues, ADRs, or extra context.

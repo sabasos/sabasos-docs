@@ -1,0 +1,128 @@
+name: Bug Report
+description: Report a broken or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill out the sections below.
+
+  - type: dropdown
+    id: project
+    attributes:
+      label: Affected project
+      options:
+        - sabas-os (compositor / desktop shell)
+        - sabas-live-iso (ISO builder)
+        - sabas-docs (Antora documentation)
+        - sabas-site (website)
+        - org-wide / cross-repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component / Module
+      description: Which module or subsystem is affected?
+      options:
+        - "sabas-os: core (event bus, layout engine, session)"
+        - "sabas-os: compositor (Wayland protocol, window management)"
+        - "sabas-os: shell (panels, overlays, app launcher)"
+        - "sabas-os: ui (widgets, TopPanel, TabBar, notifications)"
+        - "sabas-os: render-api / render-vulkan"
+        - "sabas-os: wayland-server (protocol bindings)"
+        - "sabas-os: workspace (virtual desktops)"
+        - "sabas-os: theme (tokens, layout, platform)"
+        - "sabas-os: native-bindings (Panama / DRM / libinput)"
+        - "sabas-os: desktop-portal (XDG services)"
+        - "sabas-os: plugin-api"
+        - "sabas-os: system-events (D-Bus, idle, power)"
+        - "sabas-os: global-menu"
+        - "sabas-os: apps (built-in applications)"
+        - "sabas-live-iso: iso-executor (build pipeline)"
+        - "sabas-live-iso: iso-service (build / VM test / WebUI)"
+        - "sabas-live-iso: iso-model (config, compression, VM types)"
+        - "sabas-live-iso: container/Podman build"
+        - "sabas-live-iso: WebUI / Anaconda branding"
+        - "sabas-docs: content (pages, modules, partials)"
+        - "sabas-docs: navigation (nav.adoc, antora.yml)"
+        - "sabas-docs: UI bundle / theme"
+        - "sabas-docs: build (playbook, site generation)"
+        - "sabas-site: content (pages, copy, assets)"
+        - "sabas-site: UI (styling, layout, components)"
+        - "sabas-site: build (static gen, deploy)"
+        - Other / Unknown
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / Branch
+      description: Which version or branch are you on?
+      placeholder: "e.g. main, v1.2.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Step-by-step instructions to reproduce the issue.
+      placeholder: |
+        1. Run ...
+        2. Observe ...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or output
+      description: Paste logs, stack traces, or error output here.
+      render: shell
+
+  - type: dropdown
+    id: build_mode
+    attributes:
+      label: Build mode (sabas-live-iso only)
+      description: Only relevant for sabas-live-iso bugs.
+      options:
+        - N/A
+        - JARS (separate JARs)
+        - FAT_JAR (uber-jar)
+        - NATIVE (GraalVM)
+        - Container / Podman
+        - Direct (host)
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - P0 - Critical (system crash / data loss / compositor down)
+        - P1 - High (major feature broken, no workaround)
+        - P2 - Medium (workaround exists)
+        - P3 - Low (minor / cosmetic)
+    validations:
+      required: true

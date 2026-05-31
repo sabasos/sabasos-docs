@@ -1,0 +1,23 @@
+name: Commit & Branch Lint
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  lint-pr-title:
+    name: Lint PR title
+    uses: sabasos/.github/.github/workflows/commit-lint.yml@main
+    permissions:
+      pull-requests: read
+
+  lint-branch-name:
+    name: Lint branch name
+    uses: sabasos/.github/.github/workflows/branch-naming.yml@main
+
+  human-commits:
+    name: Verify human authors
+    uses: sabasos/.github/.github/workflows/human-commits.yml@main
+    permissions:
+      pull-requests: read
+      contents: read
