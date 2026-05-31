@@ -1,0 +1,109 @@
+name: Feature Request
+description: Propose a new feature or improvement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose new features or improvements.
+
+  - type: dropdown
+    id: project
+    attributes:
+      label: Affected project
+      options:
+        - sabas-os (compositor / desktop shell)
+        - sabas-live-iso (ISO builder)
+        - sabas-docs (Antora documentation)
+        - sabas-site (website)
+        - org-wide / cross-repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component / Module
+      description: Which module or area does this feature belong to?
+      options:
+        - "sabas-os: core (event bus, layout engine, session)"
+        - "sabas-os: compositor (Wayland protocol, window management)"
+        - "sabas-os: shell (panels, overlays, app launcher)"
+        - "sabas-os: ui (widgets, TopPanel, TabBar, notifications)"
+        - "sabas-os: render-api / render-vulkan"
+        - "sabas-os: wayland-server (protocol bindings)"
+        - "sabas-os: workspace (virtual desktops)"
+        - "sabas-os: theme (tokens, layout, platform)"
+        - "sabas-os: native-bindings (JNI / DRM / libinput)"
+        - "sabas-os: desktop-portal (XDG services)"
+        - "sabas-os: plugin-api"
+        - "sabas-os: system-events (D-Bus, idle, power)"
+        - "sabas-os: global-menu"
+        - "sabas-os: apps (built-in applications)"
+        - "sabas-live-iso: iso-executor (build pipeline)"
+        - "sabas-live-iso: iso-service (build / VM test / WebUI)"
+        - "sabas-live-iso: iso-model (config, compression, VM types)"
+        - "sabas-live-iso: container/Podman build"
+        - "sabas-live-iso: WebUI / Anaconda branding"
+        - "sabas-docs: content (pages, modules, partials)"
+        - "sabas-docs: navigation (nav.adoc, antora.yml)"
+        - "sabas-docs: UI bundle / theme"
+        - "sabas-docs: build (playbook, site generation)"
+        - "sabas-site: content (pages, copy, assets)"
+        - "sabas-site: UI (styling, layout, components)"
+        - "sabas-site: build (static gen, deploy)"
+        - New module / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Motivation
+      description: What problem does this feature solve? What is the use case?
+      placeholder: "As a ... I want ... so that ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe your proposed solution or approach.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative approaches you considered?
+
+  - type: checkboxes
+    id: flags
+    attributes:
+      label: Flags
+      options:
+        - label: This is a breaking change (API / protocol / ABI)
+        - label: This requires native/JNI changes
+        - label: This affects the Wayland protocol implementation
+        - label: This affects ISO boot / dracut / squashfs structure
+        - label: This requires a new Maven module
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - P1 - High
+        - P2 - Medium
+        - P3 - Low
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other context, diagrams, or references.
