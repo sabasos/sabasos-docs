@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmarks - Sabas OS</title>
+  <meta name="description" content="JMH benchmark results across layout, CPU rasteriser, EventBus, PTY and VT parser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="logoGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#0B1F6B"/><stop offset="45%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#7EC8FF"/></linearGradient></defs>
+      <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+      <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="18.73" fill="url(#logoGrad)"/>
+      <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+    </svg>
+    <span class="nav-logo-text">SABAS<span>OS</span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="platform.html">Platform</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="performance.html">Benchmarks</a>
+    <a href="trust.html">Trust</a>
+    <a href="install.html">Install</a>
+    <a href="community.html">Community</a>
+    <a href="https://sabasos.github.io/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/sabasos" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="install.html" class="btn btn-primary">Download ISO</a>
+  </div>
+</nav>
+
+<section class="hero grid-bg">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative; padding-block:80px 72px;">
+    <div class="badge"><span class="badge-dot"></span>BENCHMARKS</div>
+    <h1 class="display hero-headline" style="font-size:48px;">Numbers, not vibes.</h1>
+    <p class="hero-sub">Real output from sabas-os-benchmarks via JMH — 2 forks, 3 warmup + 8 measurement iterations at 500ms each. All throughput figures in million ops/sec.</p>
+  </div>
+</section>
+
+<section id="benchmarks" class="wrap section">
+  <div class="bench-env reveal">
+    <span class="bench-env-chip">AMD Ryzen 9 5900HX - 16 threads</span>
+    <span class="bench-env-chip">OpenJDK 25 GraalVM CE</span>
+    <span class="bench-env-chip">JMH 1.37</span>
+    <span class="bench-env-chip">Linux 6.9 - bare metal</span>
+    <span class="bench-env-chip">Throughput mode - M ops/s</span>
+  </div>
+
+  <div class="bench-groups reveal">
+    <div>
+      <div class="bench-group-label">Layout Engine</div>
+      <div class="bench-rows">
+        <div class="bench-row">
+          <div><div class="bench-row-name">Hit-test, deep tree</div><div class="bench-row-method">LayoutBenchmark.hitTestDeepTree</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="100"></div></div>
+          <div class="bench-val"><div class="bench-val-num">35.4</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.45</div></div>
+        </div>
+        <div class="bench-row">
+          <div><div class="bench-row-name">Recompute layout, deep tree</div><div class="bench-row-method">LayoutBenchmark.layoutDeepTree</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="29"></div></div>
+          <div class="bench-val"><div class="bench-val-num">10.4</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 1.68</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="bench-group-label">CPU Rasteriser - SIMD (Vector API)</div>
+      <div class="bench-rows">
+        <div class="bench-row">
+          <div><div class="bench-row-name">Opaque fill, 2560 px scanline</div><div class="bench-row-method">CpuRasterBenchmark.simdFillOpaque2560</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="100"></div></div>
+          <div class="bench-val"><div class="bench-val-num">6.63</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.24</div></div>
+        </div>
+        <div class="bench-row">
+          <div><div class="bench-row-name">Alpha blend, 2560 px scanline</div><div class="bench-row-method">CpuRasterBenchmark.simdBlendScanline2560</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="4"></div></div>
+          <div class="bench-val"><div class="bench-val-num">0.25</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.01</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="bench-group-label">EventBus - Publish Throughput</div>
+      <div class="bench-rows">
+        <div class="bench-row">
+          <div><div class="bench-row-name">Publish, 1 subscriber</div><div class="bench-row-method">ConfigAndEventBusBenchmark.publishOneSub</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="100"></div></div>
+          <div class="bench-val"><div class="bench-val-num">3.08</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.57</div></div>
+        </div>
+        <div class="bench-row">
+          <div><div class="bench-row-name">Publish, 10 subscribers</div><div class="bench-row-method">ConfigAndEventBusBenchmark.publishTenSubs</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="11"></div></div>
+          <div class="bench-val"><div class="bench-val-num">0.33</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.08</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="bench-group-label">PTY Transport - 64 KB chunks</div>
+      <div class="bench-rows">
+        <div class="bench-row">
+          <div><div class="bench-row-name">Read, 64 KB chunk</div><div class="bench-row-method">PtyTransportBenchmark.readChunk64k</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="100"></div></div>
+          <div class="bench-val"><div class="bench-val-num">0.40</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.01</div></div>
+        </div>
+        <div class="bench-row">
+          <div><div class="bench-row-name">Write, 64 KB chunk</div><div class="bench-row-method">PtyTransportBenchmark.writeChunk64k</div></div>
+          <div class="bench-bar-track"><div class="bench-bar-fill" data-pct="25"></div></div>
+          <div class="bench-val"><div class="bench-val-num">0.10</div><div class="bench-val-unit">M ops/s</div><div class="bench-val-ci">+/- 0.02</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE NAV -->
+<div class="wrap" style="padding-block:48px 96px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="reveal">
+    <a href="architecture.html" class="page-nav-card"><div class="page-nav-label">BACK</div><div class="page-nav-title">Architecture</div><div class="page-nav-desc">Three-JVM split, frame loop, scanout paths, comparison table.</div></a>
+    <a href="trust.html" class="page-nav-card"><div class="page-nav-label">NEXT</div><div class="page-nav-title">Trust</div><div class="page-nav-desc">Reliability, security model and privacy guarantees.</div></a>
+    <a href="install.html" class="page-nav-card"><div class="page-nav-label">EXPLORE</div><div class="page-nav-title">Install</div><div class="page-nav-desc">Download the ISO or build from source.</div></a>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trust - Sabas OS</title>
+  <meta name="description" content="Reliability, security model and privacy guarantees.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="logoGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#0B1F6B"/><stop offset="45%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#7EC8FF"/></linearGradient></defs>
+      <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+      <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="18.73" fill="url(#logoGrad)"/>
+      <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+    </svg>
+    <span class="nav-logo-text">SABAS<span>OS</span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="platform.html">Platform</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="performance.html">Benchmarks</a>
+    <a href="trust.html">Trust</a>
+    <a href="install.html">Install</a>
+    <a href="community.html">Community</a>
+    <a href="https://sabasos.github.io/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/sabasos" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="install.html" class="btn btn-primary">Download ISO</a>
+  </div>
+</nav>
+
+<section class="hero grid-bg">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative; padding-block:80px 72px;">
+    <div class="badge"><span class="badge-dot"></span>TRUST</div>
+    <h1 class="display hero-headline" style="font-size:48px;">Built to stay up. Built to stay private.</h1>
+    <p class="hero-sub">Reliability, security and privacy are structural properties of Sabas OS, not features bolted on after the fact.</p>
+  </div>
+</section>
+
+<!-- RELIABILITY -->
+<section id="reliability" class="wrap section">
+  <div style="max-width:600px; margin-bottom:52px;" class="reveal">
+    <span class="label">RELIABILITY</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Built to stay up.</h2>
+    <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">Every layer of Sabas OS is designed with a clear failure boundary so that one component going wrong never takes the whole session down.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;" class="reveal">
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="rel-title">Supervised process tree</div>
+      <p class="rel-desc">The bootstrap supervisor monitors compositor and shell as separate OS processes. Either can crash and be restarted independently — a shell hang never freezes the display.</p>
+      <div class="rel-chip">crash-limited restart - 10 / 15 attempt thresholds</div>
+    </div>
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="rel-title">GC-free render loop</div>
+      <p class="rel-desc">Frame execution, damage tracking and buffer reads are pooled and allocation-free. The garbage collector never runs during a frame — so a GC pause can't cause a dropped frame or visible stutter.</p>
+      <div class="rel-chip">zero per-frame allocation - pooled SHM + DMA-BUF reads</div>
+    </div>
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <div class="rel-title">Adaptive throttle policy</div>
+      <p class="rel-desc">The deadline scheduler tracks consecutive missed frames and degrades gracefully through four levels — normal, degraded, critical, emergency — shedding work to protect frame delivery.</p>
+      <div class="rel-chip">5 / 15 / 30 miss thresholds - 120-frame startup grace</div>
+    </div>
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      <div class="rel-title">Flip-driven frame pacing</div>
+      <p class="rel-desc">The frame loop is driven by DRM page-flip completion events — not a timer. The display hardware itself paces rendering, giving zero jitter at any refresh rate including VRR.</p>
+      <div class="rel-chip">no frame timer - epoll / io_uring - VRR-native</div>
+    </div>
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      <div class="rel-title">Hotplug resilience</div>
+      <p class="rel-desc">Display hotplug events re-run OutputPathSelector per output without tearing down the session. Plugging or unplugging a monitor reconfigures DRM atomically — no compositor restart required.</p>
+      <div class="rel-chip">DRM atomic - per-output path re-selection at hotplug</div>
+    </div>
+    <div class="rel-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div class="rel-title">Session persistence</div>
+      <p class="rel-desc">The shell saves workspace state, open app positions and panel configuration to disk. After a compositor restart or reboot, the session is restored to exactly where you left it.</p>
+      <div class="rel-chip">workspace save / restore - panel state - app positions</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="security" class="grid-bg" style="border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft);">
+  <div class="wrap section">
+    <div style="max-width:600px; margin-bottom:52px;" class="reveal">
+      <span class="label">SECURITY</span>
+      <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Least privilege by default.</h2>
+      <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">Security in Sabas OS is structural, not bolted on. Every process boundary is a capability boundary, and every workspace is a namespace boundary.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;" class="reveal">
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div class="sec-title">Linux capability scoping</div>
+        </div>
+        <p class="sec-desc">Each JVM process is launched with only the Linux capabilities it needs. The compositor holds <code>CAP_SYS_TTY_CONFIG</code> and DRM device access; the shell holds neither. A compromised shell process cannot escalate to compositor-level privileges.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <div class="sec-title">Workspace namespace isolation</div>
+        </div>
+        <p class="sec-desc">Every workspace gets its own PID, mount, IPC, UTS, network, user and cgroup namespaces via <code>unshare(2)</code> called directly through Panama FFM. Apps in workspace A cannot see processes, files, or network connections in workspace B.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <div class="sec-title">Wayland protocol enforcement</div>
+        </div>
+        <p class="sec-desc">Clients communicate with the compositor only through the Wayland wire protocol — there is no shared memory region a client can corrupt. Each client gets exactly the protocol objects it negotiated; the compositor validates every request before acting on it.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div class="sec-title">MCP security gate</div>
+        </div>
+        <p class="sec-desc">The AI subsystem's agentic loop runs behind a security gate that inspects every tool call before execution. PII is redacted before any data crosses a process boundary. Every action is written to a tamper-evident audit log you can inspect at any time.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          <div class="sec-title">GraalVM native hardening</div>
+        </div>
+        <p class="sec-desc">The compositor and greeter compile to GraalVM Native Image — a closed-world AOT binary with no dynamic class loading, no reflection surface beyond what's explicitly registered, and no JVM attach mechanism. The attack surface is significantly smaller than a JVM process running bytecode.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <div class="sec-title">PAM authentication</div>
+        </div>
+        <p class="sec-desc">The greeter authenticates users through PAM — the same mechanism used by every major Linux login manager. Session launch is handled by a minimal native helper that drops privileges before exec'ing the session, ensuring the desktop never runs as root.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy" class="wrap section">
+  <div style="max-width:600px; margin-bottom:52px;" class="reveal">
+    <span class="label">PRIVACY</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Your machine, your data.</h2>
+    <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">No telemetry calls, no usage analytics, and no cloud dependencies in the core OS. Every feature that touches a network is opt-in and clearly labelled.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;" class="reveal">
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="priv-title">Zero telemetry</div>
+      <p class="priv-desc">No usage data, crash reports, or analytics are sent anywhere. The OS makes no outbound network connections on its own. There is no opt-out — there is nothing to opt out of.</p>
+    </div>
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="priv-title">Local-first AI</div>
+      <p class="priv-desc">The AI subsystem runs inference locally through Ollama. Model weights live on your machine. No query, file content, or context window is sent to a remote server unless you explicitly configure a cloud endpoint.</p>
+    </div>
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <div class="priv-title">Workspace isolation</div>
+      <p class="priv-desc">Each workspace is a separate namespace boundary. Apps in one workspace cannot read files, inspect processes, or observe network traffic from another — enforced by the kernel, not by policy.</p>
+    </div>
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="priv-title">Audit log</div>
+      <p class="priv-desc">Every action taken by the AI agent is written to a tamper-evident audit log stored locally. You can inspect exactly what the agent read, wrote, or executed — at any time, without a network connection.</p>
+    </div>
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <div class="priv-title">PII redaction</div>
+      <p class="priv-desc">The MCP security gate automatically redacts personally identifiable information before any data crosses a process boundary — even when talking to a locally-running model.</p>
+    </div>
+    <div class="priv-card">
+      <div class="priv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6s4-2 11-2 11 2 11 2v6s-4 4-11 4S1 12 1 12V6z"/><circle cx="12" cy="9" r="3"/></svg></div>
+      <div class="priv-title">Open source, auditable</div>
+      <p class="priv-desc">Every line of code that runs on your machine is publicly available. There are no binary blobs, no closed-source components in the OS itself, and no obfuscated network calls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE NAV -->
+<div class="wrap" style="padding-block:48px 96px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="reveal">
+    <a href="performance.html" class="page-nav-card"><div class="page-nav-label">BACK</div><div class="page-nav-title">Benchmarks</div><div class="page-nav-desc">JMH results across layout, rasteriser, PTY and more.</div></a>
+    <a href="install.html" class="page-nav-card"><div class="page-nav-label">NEXT</div><div class="page-nav-title">Install</div><div class="page-nav-desc">Download the ISO or build from source.</div></a>
+    <a href="community.html" class="page-nav-card"><div class="page-nav-label">EXPLORE</div><div class="page-nav-title">Community</div><div class="page-nav-desc">FAQ, GitHub, docs and discussions.</div></a>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

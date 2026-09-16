@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install - Sabas OS</title>
+  <meta name="description" content="Download the Sabas OS ISO or build from source.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="logoGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#0B1F6B"/><stop offset="45%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#7EC8FF"/></linearGradient></defs>
+      <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+      <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="18.73" fill="url(#logoGrad)"/>
+      <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+    </svg>
+    <span class="nav-logo-text">SABAS<span>OS</span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="platform.html">Platform</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="performance.html">Benchmarks</a>
+    <a href="trust.html">Trust</a>
+    <a href="install.html">Install</a>
+    <a href="community.html">Community</a>
+    <a href="https://sabasos.github.io/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/sabasos" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="install.html" class="btn btn-primary">Download ISO</a>
+  </div>
+</nav>
+
+<section class="hero grid-bg">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative; padding-block:80px 72px;">
+    <div class="badge"><span class="badge-dot"></span>GET SABAS OS</div>
+    <h1 class="display hero-headline" style="font-size:48px;">Boot it, or build it yourself.</h1>
+    <p class="hero-sub">The live ISO boots straight into the Sabas compositor and shell. Ships on two base distros — the Software Center auto-detects dnf or apt underneath either way.</p>
+  </div>
+</section>
+
+<section id="install" class="grid-bg" style="border-top:1px solid var(--border-soft);">
+  <div class="wrap section">
+    <div class="install-grid reveal">
+      <div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+          <a href="#" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Fedora base ISO
+          </a>
+          <a href="#" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Ubuntu base ISO
+          </a>
+        </div>
+        <div style="margin-bottom:40px;">
+          <a href="https://github.com/sabasos" class="btn btn-secondary" target="_blank" rel="noopener">Build from source</a>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); letter-spacing:1px; margin-bottom:14px;">REQUIREMENTS</div>
+        <div class="req-grid">
+          <div>Java 25+ (Panama FFM, Vector API)</div>
+          <div>Linux kernel 5.x+ (DRM atomic, VRR)</div>
+          <div>Vulkan GPU w/ dma-buf import</div>
+          <div>libwayland, libinput, libxkbcommon</div>
+          <div>libgbm (Path F multi-GPU)</div>
+          <div>GraalVM CE (native image, optional)</div>
+        </div>
+      </div>
+      <div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); margin-left:8px;">RUN NESTED (DEVELOPMENT)</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$ </span><span class="cmd">mkdir -p ~/.config/sabas</span></div>
+            <div><span class="prompt">$ </span><span class="cmd">cp config/sabas/*.conf ~/.config/sabas/</span></div>
+            <div><span class="prompt">$ </span><span class="cmd">java -Dsabas.output=nested -jar sabas-os-shell/target/sabas-os-shell.jar</span></div>
+            <div class="out">&gt; nested mode: rendering inside GNOME/KDE</div>
+            <div class="ok">&gt; shell ready</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;" class="terminal">
+          <div class="terminal-bar">
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span class="terminal-dot" style="background:#3A4266;"></span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); margin-left:8px;">BARE METAL (PRODUCTION)</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="prompt">$ </span><span class="cmd">mvn clean package -DskipTests</span></div>
+            <div><span class="prompt">$ </span><span class="cmd">./scripts/run-sabas-native.sh</span></div>
+            <div class="ok">&gt; DRM atomic mode - session started</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE NAV -->
+<div class="wrap" style="padding-block:48px 96px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="reveal">
+    <a href="trust.html" class="page-nav-card"><div class="page-nav-label">BACK</div><div class="page-nav-title">Trust</div><div class="page-nav-desc">Reliability, security model and privacy guarantees.</div></a>
+    <a href="community.html" class="page-nav-card"><div class="page-nav-label">NEXT</div><div class="page-nav-title">Community</div><div class="page-nav-desc">FAQ, GitHub, docs and discussions.</div></a>
+    <a href="https://sabasos.github.io/" class="page-nav-card" target="_blank" rel="noopener"><div class="page-nav-label">DOCS</div><div class="page-nav-title">Documentation</div><div class="page-nav-desc">Full architecture reference and module guides.</div></a>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture - Sabas OS</title>
+  <meta name="description" content="Three-JVM split, frame loop, scanout paths A-F, and comparison table.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="logoGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#0B1F6B"/><stop offset="45%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#7EC8FF"/></linearGradient></defs>
+      <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+      <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="18.73" fill="url(#logoGrad)"/>
+      <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+    </svg>
+    <span class="nav-logo-text">SABAS<span>OS</span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="platform.html">Platform</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="performance.html">Benchmarks</a>
+    <a href="trust.html">Trust</a>
+    <a href="install.html">Install</a>
+    <a href="community.html">Community</a>
+    <a href="https://sabasos.github.io/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/sabasos" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="install.html" class="btn btn-primary">Download ISO</a>
+  </div>
+</nav>
+
+<section class="hero grid-bg">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative; padding-block:80px 72px;">
+    <div class="badge"><span class="badge-dot"></span>ARCHITECTURE</div>
+    <h1 class="display hero-headline" style="font-size:48px;">Three JVMs. One frame loop.</h1>
+    <p class="hero-sub">A minimal-heap supervisor spawns the compositor and shell as separate, capability-scoped processes. The compositor owns every rendering decision; the shell only decides what to draw.</p>
+  </div>
+</section>
+
+<section id="architecture" class="grid-bg" style="border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft);">
+  <div class="wrap section">
+    <div style="max-width:600px; margin-bottom:52px;" class="reveal">
+      <span class="label">FRAME PIPELINE</span>
+      <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Per page-flip event.</h2>
+      <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">No frame timer — page-flip events pace rendering. The display hardware itself drives the loop, giving zero jitter at any refresh rate including VRR.</p>
+    </div>
+    <div style="margin-bottom:40px;" class="reveal">
+      <div class="pipeline">
+        <div class="pipeline-step"><div class="pipeline-num">01</div><div class="pipeline-name">epoll / io_uring</div><div class="pipeline-detail">DRM flip complete triggers frame</div></div>
+        <div class="pipeline-step"><div class="pipeline-num">02</div><div class="pipeline-name">Scene graph</div><div class="pipeline-detail">Build surface entries, compute damage</div></div>
+        <div class="pipeline-step"><div class="pipeline-num">03</div><div class="pipeline-name">Pipeline select</div><div class="pipeline-detail">Direct, Planes, Damage or Full</div></div>
+        <div class="pipeline-step"><div class="pipeline-num">04</div><div class="pipeline-name">Render + present</div><div class="pipeline-detail">Vulkan draw, DRM atomic commit</div></div>
+        <div class="pipeline-step"><div class="pipeline-num">05</div><div class="pipeline-name">Throttle report</div><div class="pipeline-detail">Deadline scheduler, VRR pacing</div></div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="arch-supervisor" style="margin-bottom:8px;">
+        <div class="arch-label">JVM 0 - SUPERVISOR</div>
+        <div class="arch-title">sabas-bootstrap</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 32px;" class="arch-list">
+          <div>Spawns compositor + shell via ProcessBuilder</div>
+          <div>Per-child Linux capability scoping (setpriv)</div>
+          <div>Crash-limited auto-restart (10 / 15 attempts)</div>
+          <div>Parallel launch - shell prewarms while compositor binds</div>
+          <div>Binary mode: GraalVM-native, no JVM overhead</div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:center; padding:6px 0;">
+        <svg width="2" height="28" viewBox="0 0 2 28"><line x1="1" y1="0" x2="1" y2="28" stroke="#2A3A60" stroke-width="2" stroke-dasharray="4 3"/></svg>
+      </div>
+      <div class="arch-row">
+        <div class="arch-box">
+          <div class="arch-label">JVM 1 - COMPOSITOR</div>
+          <div class="arch-title">sabas-compositor</div>
+          <div class="arch-list">
+            <div>GPU device selection</div>
+            <div>DRM/KMS, atomic page flips</div>
+            <div>Frame loop (io_uring transport)</div>
+            <div>Scene graph, window management</div>
+            <div>Input routing (libinput)</div>
+            <div>Compositing pipeline (4 modes)</div>
+          </div>
+        </div>
+        <div class="arch-connector">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text-faint); writing-mode:vertical-rl; letter-spacing:1px;">WAYLAND SOCKET</div>
+          <svg width="2" height="40" viewBox="0 0 2 40"><line x1="1" y1="0" x2="1" y2="40" stroke="#2A3A60" stroke-width="2" stroke-dasharray="4 3"/></svg>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text-faint); writing-mode:vertical-rl; letter-spacing:1px;">DMA-BUF FD</div>
+        </div>
+        <div class="arch-box">
+          <div class="arch-label">JVM 2 - SHELL</div>
+          <div class="arch-title">sabas-shell</div>
+          <div class="arch-list">
+            <div>Panel content, widgets</div>
+            <div>Workspace and app launching</div>
+            <div>Session persistence</div>
+            <div>Own VulkanDevice, own GC</div>
+            <div>Zero display decisions</div>
+            <div>GC pause never freezes display</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;" class="reveal">
+      <div class="card" style="padding:28px 32px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); letter-spacing:1px; margin-bottom:16px;">SCANOUT PATH SELECTION - PER OUTPUT, AT HOTPLUG</div>
+        <div class="path-row">
+          <div class="path-chip active"><div class="path-letter">A</div><div class="path-desc">same-GPU zero-copy</div></div>
+          <div class="path-chip"><div class="path-letter">B</div><div class="path-desc">modifier zero-copy</div></div>
+          <div class="path-chip"><div class="path-letter">C</div><div class="path-desc">dumb buffer fallback</div></div>
+          <div class="path-chip"><div class="path-letter">D</div><div class="path-desc">PRIME import</div></div>
+          <div class="path-chip"><div class="path-letter">E</div><div class="path-desc">GPU blit</div></div>
+          <div class="path-chip"><div class="path-letter">F</div><div class="path-desc">GBM scanout</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;" class="reveal">
+      <a href="https://sabasos.github.io/" class="mono" style="font-size:13px;" target="_blank" rel="noopener">Full architecture reference</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare" class="wrap section">
+  <div style="max-width:600px; margin-bottom:48px;" class="reveal">
+    <span class="label">HOW IT COMPARES</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Same job, different engine.</h2>
+    <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">Every major Linux compositor is written in C or C++ with a native rendering path. Sabas OS's whole graphics pipeline runs on the JVM instead.</p>
+  </div>
+  <div class="cmp-wrap reveal">
+    <table class="cmp-table mono">
+      <thead>
+        <tr>
+          <th class="row-label"></th>
+          <th class="col-us">Sabas OS</th>
+          <th>GNOME<br><span style="font-size:10px;color:var(--text-faint);text-transform:none;">Mutter / Linux</span></th>
+          <th>KDE Plasma<br><span style="font-size:10px;color:var(--text-faint);text-transform:none;">KWin / Linux</span></th>
+          <th>Sway<br><span style="font-size:10px;color:var(--text-faint);text-transform:none;">wlroots / Linux</span></th>
+          <th>Windows 11<br><span style="font-size:10px;color:var(--text-faint);text-transform:none;">DWM / DirectX</span></th>
+          <th>macOS Sequoia<br><span style="font-size:10px;color:var(--text-faint);text-transform:none;">Quartz / Metal</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">Implementation language</td><td class="col-us">Java 25 (Panama FFM)</td><td>C</td><td>C++</td><td>C</td><td>C / C++</td><td>C / Obj-C / Swift</td></tr>
+        <tr><td class="row-label">Source available</td><td class="col-us"><span class="check">fully open source</span></td><td><span class="check">open source</span></td><td><span class="check">open source</span></td><td><span class="check">open source</span></td><td><span class="cross">proprietary</span></td><td><span class="cross">proprietary</span></td></tr>
+        <tr><td class="row-label">Native glue / C shims</td><td class="col-us"><span class="check">None</span></td><td class="cross">-</td><td class="cross">-</td><td>wlroots (C)</td><td>Win32 / COM</td><td>CoreGraphics (C)</td></tr>
+        <tr><td class="row-label">GPU / display path</td><td class="col-us">Direct Vulkan + DRM/KMS</td><td>OpenGL/Vulkan via Cogl</td><td>OpenGL/Vulkan via KWin</td><td>OpenGL via wlroots</td><td>DirectX 12 / DXGI</td><td>Metal / CoreAnimation</td></tr>
+        <tr><td class="row-label">Zero-copy multi-GPU scanout</td><td class="col-us">6 selectable paths (A-F)</td><td>driver-dependent</td><td>driver-dependent</td><td>driver-dependent</td><td>driver-dependent</td><td>Apple Silicon only</td></tr>
+        <tr><td class="row-label">Render-loop memory model</td><td class="col-us">GC-free, pooled buffers</td><td>manual (C)</td><td>manual (C++)</td><td>manual (C)</td><td>manual (C++)</td><td>ARC / manual (C)</td></tr>
+        <tr><td class="row-label">Shell / compositor isolation</td><td class="col-us">3 supervised JVMs</td><td>single process</td><td>single process</td><td>single process</td><td>kernel + csrss.exe</td><td>WindowServer (single)</td></tr>
+        <tr><td class="row-label">Workspace namespace isolation</td><td class="col-us"><span class="check">7 Linux namespaces</span></td><td><span class="cross">none</span></td><td><span class="cross">none</span></td><td><span class="cross">none</span></td><td>partial (AppContainer)</td><td>partial (sandbox)</td></tr>
+        <tr><td class="row-label">Telemetry / data collection</td><td class="col-us"><span class="check">zero, none at all</span></td><td>minimal, opt-out</td><td>minimal, opt-out</td><td><span class="check">none</span></td><td><span class="cross">extensive, opt-out</span></td><td>moderate, opt-out</td></tr>
+        <tr><td class="row-label">Built-in AI subsystem</td><td class="col-us"><span class="check">local Ollama + MCP</span></td><td><span class="cross">none</span></td><td><span class="cross">none</span></td><td><span class="cross">none</span></td><td>Copilot (cloud)</td><td>Apple Intelligence (cloud)</td></tr>
+        <tr><td class="row-label">App toolkit</td><td class="col-us">native Java render tree</td><td>GTK</td><td>Qt / QML</td><td>client-dependent</td><td>Win32 / WinUI 3</td><td>AppKit / SwiftUI</td></tr>
+        <tr><td class="row-label">Hardware vendor lock-in</td><td class="col-us"><span class="check">none - any Vulkan GPU</span></td><td><span class="check">none</span></td><td><span class="check">none</span></td><td><span class="check">none</span></td><td>x86-64 only</td><td><span class="cross">Apple hardware only</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PAGE NAV -->
+<div class="wrap" style="padding-block:48px 96px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="reveal">
+    <a href="platform.html" class="page-nav-card"><div class="page-nav-label">BACK</div><div class="page-nav-title">Platform</div><div class="page-nav-desc">Workspace isolation, AI, IDE, browser, audio, media, apps.</div></a>
+    <a href="performance.html" class="page-nav-card"><div class="page-nav-label">NEXT</div><div class="page-nav-title">Benchmarks</div><div class="page-nav-desc">JMH results across layout, rasteriser, PTY and more.</div></a>
+    <a href="trust.html" class="page-nav-card"><div class="page-nav-label">EXPLORE</div><div class="page-nav-title">Trust</div><div class="page-nav-desc">Reliability, security model and privacy guarantees.</div></a>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

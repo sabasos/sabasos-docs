@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform &amp; Apps — Sabas OS</title>
+  <meta name="description" content="Workspace isolation, local AI, native IDE, browser, audio, media and built-in apps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="logoGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#0B1F6B"/><stop offset="45%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#7EC8FF"/></linearGradient></defs>
+      <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+      <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+      <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+      <circle cx="100" cy="102" r="18.73" fill="url(#logoGrad)"/>
+      <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+    </svg>
+    <span class="nav-logo-text">SABAS<span>OS</span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="platform.html">Platform</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="performance.html">Benchmarks</a>
+    <a href="trust.html">Trust</a>
+    <a href="install.html">Install</a>
+    <a href="community.html">Community</a>
+    <a href="https://sabasos.github.io/" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/sabasos" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="install.html" class="btn btn-primary">Download ISO</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero grid-bg">
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative; padding-block:80px 72px;">
+    <div class="badge"><span class="badge-dot"></span>PLATFORM &amp; APPS</div>
+    <h1 class="display hero-headline" style="font-size:48px;">More than a compositor.</h1>
+    <p class="hero-sub">Workspace isolation, local AI, a native IDE, a composited browser, studio-grade audio and hardware-accelerated media — all built in, all zero JNI.</p>
+  </div>
+</section>
+
+<!-- PLATFORM FEATURES -->
+<section id="platform" class="wrap section">
+  <div style="max-width:600px; margin-bottom:52px;" class="reveal">
+    <span class="label">THE PLATFORM</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">Subsystems that usually stay third-party.</h2>
+    <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">Sabas OS ships the subsystems that usually stay third-party add-ons — isolated workspaces, a local AI that knows your machine, a native IDE, and a browser composited by the OS itself.</p>
+  </div>
+  <div class="feature-grid reveal">
+    <div class="feature-card card-top-accent">
+      <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <div class="feature-tag">SABAS-OS-WORKSPACE</div>
+      <div class="feature-title">Real workspace isolation</div>
+      <p class="feature-desc">Every workspace gets its own OverlayFS upper layer and its own PID, mount, IPC, UTS, network, user and cgroup namespaces — created with <code>unshare(2)</code> called directly through Java FFM, no native helper binary. Apps share a read-only base but can't see each other's writes, processes or network.</p>
+      <div class="feature-chip">OverlayFS · 7 namespace types · unshare(2) / setns(2)</div>
+    </div>
+    <div class="feature-card card-top-accent">
+      <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="10.8" y1="6.6" x2="6.2" y2="17.4"/><line x1="13.2" y1="6.6" x2="17.8" y2="17.4"/><line x1="7" y1="19" x2="17" y2="19"/></svg>
+      <div class="feature-tag">SABAS-OS-AI</div>
+      <div class="feature-title">AI grounded in your machine</div>
+      <p class="feature-desc">Local-first through native Ollama — no cloud round-trip by default. An LSM-tree index (full-text, vector and temporal) grounds answers in your actual files and history. An agentic loop acts through MCP tools behind a security gate that redacts PII before anything crosses a boundary.</p>
+      <div class="feature-chip">MCP host + server · local Ollama · tamper-evident audit log</div>
+    </div>
+    <div class="feature-card card-top-accent">
+      <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/><line x1="13" y1="4" x2="11" y2="20"/></svg>
+      <div class="feature-tag">SABAS-OS-IDE</div>
+      <div class="feature-title">GPU-accelerated IDE, built in</div>
+      <p class="feature-desc">A native, Java-first editor with LSP completion, DAP debugging and hot code reload — with the AI subsystem wired in directly, no IPC boundary. It's a Wayland client like any other app, rendered through the same Vulkan pipeline as the desktop.</p>
+      <div class="feature-chip">LSP · DAP · hot reload · zero-IPC AI integration</div>
+    </div>
+    <div class="feature-card card-top-flame">
+      <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><circle cx="5.6" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="7.8" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
+      <div class="feature-tag">SABAS-OS-BROWSER</div>
+      <div class="feature-title">Chromium, composited natively</div>
+      <p class="feature-desc">A CEF-based browser rendered off-screen and handed to the compositor as a DMA-BUF — zero-copy, verified live on real GPU hardware — instead of managing its own window and swap chain outside Sabas's pipeline.</p>
+      <div class="feature-chip">CEF · OnAcceleratedPaint → DMA-BUF · opt-in GPU path</div>
+    </div>
+    <div class="feature-card card-top-accent feature-card-wide">
+      <div style="display:flex; gap:40px; flex-wrap:wrap;">
+        <div style="flex:1.2; min-width:260px; display:flex; flex-direction:column; gap:14px;">
+          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3.5l2.5-7 4 15 2.5-8h3.5l2 4"/></svg>
+          <div class="feature-tag">SABAS-OS-AUDIO · ~90% COMPLETE</div>
+          <div class="feature-title">Studio-grade spatial audio, zero JNI</div>
+          <p class="feature-desc">A full mastering-grade DSP chain plus a license-free immersive ambisonic engine — the same 3D sound field decodes to binaural headphones or a 5.1/7.1/7.1.4 speaker rig, with measured-HRTF convolution from SOFA datasets. No Dolby, no DTS licensing — first-order ambisonics and Panama FFM bindings straight to PipeWire.</p>
+          <div class="feature-chip">FOA ambisonics · SOFA HRTF · 7.1.4 w/ height · RNNoise · EBU R128 AGC</div>
+        </div>
+        <div style="flex:1; max-width:300px; min-width:200px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); letter-spacing:1px; margin-bottom:12px;">SIGNAL CHAIN</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; line-height:2.1; color:var(--text-dim);">
+            <div>→ RNNoise (voice denoising)</div>
+            <div>→ Bass / treble EQ</div>
+            <div>→ Multiband compressor</div>
+            <div>→ Loudness AGC (EBU R128)</div>
+            <div>→ Ambisonic spatializer</div>
+            <div style="color:var(--accent-bright);">→ Lookahead limiter</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card card-top-accent feature-card-wide">
+      <div style="display:flex; gap:40px; flex-wrap:wrap;">
+        <div style="flex:1.2; min-width:260px; display:flex; flex-direction:column; gap:14px;">
+          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <div class="feature-tag">SABAS-OS-MEDIA</div>
+          <div class="feature-title">Hardware-accelerated media, zero JNI</div>
+          <p class="feature-desc">A full media pipeline built on Panama FFM bindings to FFmpeg 7 — hardware-accelerated decode and encode via VA-API and NVENC, a frame-accurate seek engine, and a subtitle renderer that composites directly into the Vulkan pipeline. Video frames are handed to the compositor as DMA-BUF — zero-copy from the decoder to the display.</p>
+          <div class="feature-chip">FFmpeg 7 · VA-API · NVENC · DMA-BUF zero-copy · frame-accurate seek · ASS/SRT subtitles</div>
+        </div>
+        <div style="flex:1; max-width:300px; min-width:200px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-faint); letter-spacing:1px; margin-bottom:12px;">DECODE PIPELINE</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; line-height:2.1; color:var(--text-dim);">
+            <div>→ Demux (FFmpeg AVFormat)</div>
+            <div>→ HW decode (VA-API / NVENC)</div>
+            <div>→ Frame → DMA-BUF export</div>
+            <div>→ Vulkan import (dma_buf)</div>
+            <div>→ Subtitle composite</div>
+            <div style="color:var(--accent-bright);">→ Compositor scanout (zero-copy)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PURE JAVA -->
+<section class="wrap section" style="padding-top:0;">
+  <div style="max-width:580px; margin-bottom:52px;" class="reveal">
+    <span class="label">WHY PURE JAVA</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px;">The whole graphics stack, one runtime.</h2>
+  </div>
+  <div class="value-grid reveal">
+    <div class="value-card"><div class="value-title">Zero native glue</div><p class="value-desc">Built on Java 25's Panama FFM and the Vector API. No JNI bridges, no C shims, no wlroots dependency anywhere in the stack.</p></div>
+    <div class="value-card"><div class="value-title">Direct Vulkan + DRM/KMS</div><p class="value-desc">The compositor drives Vulkan and DRM atomic mode-setting itself — a flip-driven frame loop with no intermediate rendering library between the JVM and the GPU.</p></div>
+    <div class="value-card"><div class="value-title">Zero-copy scanout</div><p class="value-desc">Six selectable output paths (A-F) route rendered frames to the display, picking zero-copy whenever the GPU and scanout hardware allow it.</p></div>
+    <div class="value-card flame"><div class="value-title">GC-free hot path</div><p class="value-desc">Frame execution, damage tracking and buffer reads are pooled and allocation-free — a GC pause never shows up as a dropped frame.</p></div>
+    <div class="value-card"><div class="value-title">Three-JVM supervision</div><p class="value-desc">A minimal-heap supervisor JVM spawns compositor and shell as separate, capability-scoped processes and restarts either on crash.</p></div>
+    <div class="value-card"><div class="value-title">Multi-GPU aware</div><p class="value-desc">OutputPathSelector scores same-GPU and cross-GPU paths per output at hotplug time — laptop iGPU and external dGPU handled automatically.</p></div>
+  </div>
+</section>
+
+<!-- BUILT-IN APPS -->
+<section class="wrap section" style="padding-top:0;">
+  <div style="max-width:600px; margin-bottom:48px;" class="reveal">
+    <span class="label">BUILT IN</span>
+    <h2 class="display" style="font-size:36px; font-weight:700; color:#F4F7FD; letter-spacing:-.3px; margin-bottom:14px;">A working desktop, out of the box.</h2>
+    <p style="font-size:15px; line-height:1.65; color:var(--text-dim);">Eight native apps ship with the OS — same render tree as the shell, drawn straight through the compositor's Vulkan pipeline. No JavaFX, no Swing, no Electron.</p>
+  </div>
+  <div class="apps-grid reveal">
+    <div class="app-cell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="11" cy="17" r="2"/></svg>
+      <div><div class="app-name">Settings</div><p class="app-desc">Wi-Fi, display, sound, power, about.</p></div>
+    </div>
+    <div class="app-cell highlight">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/></svg>
+      <div><div class="app-name">Files</div><p class="app-desc">Cloud storage, high-performance index, multi-pane browsing.</p><div class="app-badge">cloud indexed fast</div></div>
+    </div>
+    <div class="app-cell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 10 12 7 15"/><line x1="12" y1="15" x2="17" y2="15"/></svg>
+      <div><div class="app-name">Terminal</div><p class="app-desc">Full shell emulator, GPU-rendered glyphs.</p></div>
+    </div>
+    <div class="app-cell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="5" y2="13"/><line x1="12" y1="19" x2="12" y2="7"/><line x1="19" y1="19" x2="19" y2="10"/></svg>
+      <div><div class="app-name">System Monitor</div><p class="app-desc">Live CPU, memory and process view from /proc.</p></div>
+    </div>
+    <div class="app-cell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5V16.5L12 21L21 16.5V7.5L12 3Z"/><path d="M3 7.5 12 12 21 7.5"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+      <div><div class="app-name">Software Center</div><p class="app-desc">Install, remove and update packages — auto-detects dnf or apt.</p></div>
+    </div>
+    <div class="app-cell highlight">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div><div class="app-name">Vault</div><p class="app-desc">Encrypted secrets store. AES-256-GCM at rest, session-locked.</p><div class="app-badge">AES-256-GCM</div></div>
+    </div>
+    <div class="app-cell highlight">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <div><div class="app-name">Notes</div><p class="app-desc">Markdown-first, full-text search, optional Vault encryption.</p><div class="app-badge">Markdown Vault-encrypted</div></div>
+    </div>
+    <div class="app-cell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      <div><div class="app-name">Trash</div><p class="app-desc">Recoverable file deletion — restore or permanently empty.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE NAV -->
+<div class="wrap" style="padding-block:48px 96px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" class="reveal">
+    <a href="index.html" class="page-nav-card"><div class="page-nav-label">BACK</div><div class="page-nav-title">Home</div><div class="page-nav-desc">Overview, hero, about and desktop mock.</div></a>
+    <a href="architecture.html" class="page-nav-card"><div class="page-nav-label">NEXT</div><div class="page-nav-title">Architecture</div><div class="page-nav-desc">Three-JVM split, frame loop, scanout paths, comparison table.</div></a>
+    <a href="performance.html" class="page-nav-card"><div class="page-nav-label">EXPLORE</div><div class="page-nav-title">Benchmarks</div><div class="page-nav-desc">JMH results across layout, rasteriser, PTY and more.</div></a>
+  </div>
+</div>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
