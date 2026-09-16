@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0A0E17;
+      color: #E7ECF7;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #7EC8FF; text-decoration: none; }
+    a:hover { color: #A9DBFF; }
+    code, .mono { font-family: 'IBM Plex Mono', 'SF Mono', monospace; }
+    .display { font-family: 'Montserrat', system-ui, sans-serif; }
+    ::selection { background: #1E90FF; color: #05070D; }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(126,200,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(126,200,255,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #2F8FFF, #1E6FE0);
+      color: #06101F;
+      font-weight: 600;
+      box-shadow: 0 0 0 1px rgba(126,200,255,0.4), 0 8px 24px -8px rgba(30,144,255,0.55);
+    }
+    .btn-primary:hover { filter: brightness(1.08); }
+    .btn-secondary {
+      background: transparent;
+      color: #E7ECF7;
+      border: 1px solid #2A3350;
+    }
+    .btn-secondary:hover { border-color: #4A5A8A; background: rgba(126,200,255,0.06); }
+
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .value-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; }
+    .arch-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: stretch; }
+    .path-row { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 10px; }
+    .req-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 32px; }
+    .footer-cols { display: flex; gap: 64px; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero-row { flex-direction: column; }
+      .hero-copy { max-width: 100% !important; }
+      .value-grid { grid-template-columns: 1fr !important; }
+      .arch-row { grid-template-columns: 1fr !important; }
+      .arch-arrow { display: none !important; }
+      .path-row { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+      .req-grid { grid-template-columns: 1fr !important; }
+      .footer-cols { flex-wrap: wrap; gap: 32px !important; }
+      .hero-headline { font-size: 40px !important; }
+      .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="width:100%; min-height:100%; background:#0A0E17; overflow-x:hidden;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:18px 48px; border-bottom:1px solid #1A2138; background:rgba(10,14,23,0.88); backdrop-filter:blur(6px);" class="section-pad">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <svg width="30" height="30" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="navFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#0B1F6B"/>
+            <stop offset="45%" stop-color="#1E90FF"/>
+            <stop offset="100%" stop-color="#7EC8FF"/>
+          </linearGradient>
+        </defs>
+        <line x1="100" y1="29.45" x2="174.18" y2="83.35" stroke="#8FCBEF" stroke-width="5" stroke-linecap="round"/>
+        <line x1="174.18" y1="83.35" x2="145.86" y2="170.55" stroke="#FF4500" stroke-width="5" stroke-linecap="round"/>
+        <line x1="145.86" y1="170.55" x2="54.14" y2="170.55" stroke="#A2653E" stroke-width="5" stroke-linecap="round"/>
+        <line x1="54.14" y1="170.55" x2="25.82" y2="83.35" stroke="#1E90FF" stroke-width="5" stroke-linecap="round"/>
+        <line x1="25.82" y1="83.35" x2="100" y2="29.45" stroke="#4B0082" stroke-width="5" stroke-linecap="round"/>
+        <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#navFlame)" stroke-width="6"/>
+        <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#navFlame)" stroke-width="6"/>
+        <circle cx="100" cy="102" r="18.73" fill="url(#navFlame)"/>
+        <circle cx="108.53" cy="93.47" r="5.54" fill="#ffffff"/>
+      </svg>
+      <span class="display" style="font-weight:700; font-size:18px; letter-spacing:2px; color:#F3F5FB;">SABAS<span style="color:#7EC8FF;">OS</span></span>
+    </div>
+    <div class="nav-links mono" style="font-size:14px; color:#AEB6CC;">
+      <a href="#architecture">Architecture</a>
+      <a href="#install">Install</a>
+      <a href="#">Docs</a>
+      <a href="#">GitHub</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="#install" class="btn-primary mono" style="padding:9px 18px; border-radius:4px; font-size:13px;">Download ISO</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="grid-bg section-pad" style="padding:96px 48px 88px 48px; border-bottom:1px solid #1A2138; position:relative;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(30,144,255,0.14), transparent 70%); pointer-events:none;"></div>
+    <div class="hero-row" style="display:flex; gap:64px; align-items:center; max-width:1220px; margin:0 auto; position:relative;">
+      <div class="hero-copy" style="max-width:640px;">
+        <div class="mono" style="display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#7EC8FF; border:1px solid #1E3A5F; background:rgba(30,144,255,0.08); padding:6px 12px; border-radius:3px; margin-bottom:24px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:#7EC8FF; display:inline-block;"></span>
+          BUILT ON JAVA 25 · PANAMA FFM
+        </div>
+        <h1 class="display hero-headline" style="font-size:56px; line-height:1.06; font-weight:800; margin:0 0 24px 0; color:#F6F8FD; letter-spacing:-0.5px;">
+          A desktop OS<br>written entirely in <span style="color:#7EC8FF;">Java.</span>
+        </h1>
+        <p style="font-size:18px; line-height:1.6; color:#AEB6CC; margin:0 0 36px 0; max-width:540px;">
+          No JNI. No C shims. No wlroots. Sabas OS's compositor speaks Wayland, Vulkan and DRM/KMS directly from the JVM — down to zero-copy scanout and a GC-free render loop.
+        </p>
+        <div style="display:flex; gap:14px; margin-bottom:40px;">
+          <a href="#install" class="btn-primary mono" style="padding:13px 24px; border-radius:4px; font-size:14px;">Download ISO</a>
+          <a href="#" class="btn-secondary mono" style="padding:13px 24px; border-radius:4px; font-size:14px;">View on GitHub</a>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; justify-content:center;">
+        <div class="mono" style="width:100%; max-width:480px; background:#0D1220; border:1px solid #232B45; border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);">
+          <div style="display:flex; gap:7px; padding:12px 14px; border-bottom:1px solid #1A2138;">
+            <span style="width:10px; height:10px; border-radius:50%; background:#3A4266;"></span>
+            <span style="width:10px; height:10px; border-radius:50%; background:#3A4266;"></span>
+            <span style="width:10px; height:10px; border-radius:50%; background:#3A4266;"></span>
+          </div>
+          <div style="padding:20px; font-size:13px; line-height:1.9; color:#9FB4D6;">
+            <div><span style="color:#5C6690;">$</span> mvn clean package -DskipTests</div>
+            <div><span style="color:#5C6690;">$</span> ./scripts/run-sabas-native.sh</div>
+            <div style="color:#5C6690;">&gt; wayland-server: WAYLAND_DISPLAY=wayland-0</div>
+            <div style="color:#5C6690;">&gt; compositor: DRM atomic, VK_EXT_external_memory_dma_buf</div>
+            <div style="color:#5C6690;">&gt; scanout: path=A (same-gpu, zero-copy)</div>
+            <div><span style="color:#7EC8FF;">&gt; sabas-shell connected — session ready</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUE GRID -->
+  <div class="section-pad" style="padding:88px 48px; max-width:1220px; margin:0 auto;">
+    <div style="max-width:600px; margin-bottom:56px;">
+      <div class="mono" style="font-size:12px; color:#7EC8FF; letter-spacing:1.5px; margin-bottom:12px;">// WHY PURE JAVA</div>
+      <h2 class="display" style="font-size:34px; font-weight:700; color:#F6F8FD; margin:0; letter-spacing:-0.3px;">The whole graphics stack, one runtime.</h2>
+    </div>
+    <div class="value-grid" style="border:1px solid #1E2540; background:#1E2540;">
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #1E90FF;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[01]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">Zero native glue</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">Built on Java 25's Panama FFM and the Vector API. No JNI bridges, no C shims, no wlroots dependency anywhere in the stack.</p>
+      </div>
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #1E90FF;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[02]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">Direct Vulkan + DRM/KMS</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">The compositor drives Vulkan and DRM atomic mode-setting itself — a flip-driven, epoll-based frame loop with no intermediate rendering library.</p>
+      </div>
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #1E90FF;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[03]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">Zero-copy scanout</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">Six selectable output paths (A–F) route rendered frames to the display, picking zero-copy whenever the GPU and scanout hardware allow it.</p>
+      </div>
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #FF4500;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[04]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">GC-free hot path</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">Frame execution, damage tracking and buffer reads are pooled and allocation-free — a GC pause never shows up as a dropped frame.</p>
+      </div>
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #1E90FF;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[05]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">Two-JVM isolation</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">Compositor and shell run as separate JVMs over the Wayland wire protocol. A shell GC pause or crash never freezes the display.</p>
+      </div>
+      <div style="background:#0D1220; padding:32px; border-top:2px solid #1E90FF;">
+        <div class="mono" style="font-size:12px; color:#5C6690; margin-bottom:16px;">[06]</div>
+        <h3 style="font-size:17px; font-weight:600; color:#F0F3FA; margin:0 0 10px 0;">Multi-GPU aware</h3>
+        <p style="font-size:14px; line-height:1.6; color:#9AA3BE; margin:0;">OutputPathSelector scores same-GPU and cross-GPU paths per output at hotplug time — laptop iGPU and external dGPU, handled automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE TEASER -->
+  <div id="architecture" class="grid-bg section-pad" style="padding:88px 48px; border-top:1px solid #1A2138; border-bottom:1px solid #1A2138;">
+    <div style="max-width:1220px; margin:0 auto;">
+      <div style="max-width:600px; margin-bottom:56px;">
+        <div class="mono" style="font-size:12px; color:#7EC8FF; letter-spacing:1.5px; margin-bottom:12px;">// ARCHITECTURE</div>
+        <h2 class="display" style="font-size:34px; font-weight:700; color:#F6F8FD; margin:0 0 16px 0; letter-spacing:-0.3px;">Two JVMs. One frame loop.</h2>
+        <p style="font-size:15px; line-height:1.6; color:#9AA3BE; margin:0;">The compositor owns every rendering and display decision; the shell only decides what to draw. They talk over a Unix domain socket at roughly 3–5µs per message.</p>
+      </div>
+
+      <div class="arch-row">
+        <div style="background:#0D1220; border:1px solid #232B45; border-radius:6px; padding:28px;">
+          <div class="mono" style="font-size:11px; color:#5C6690; letter-spacing:1px; margin-bottom:6px;">JVM 1</div>
+          <h3 style="font-size:16px; font-weight:600; color:#F0F3FA; margin:0 0 16px 0;">sabas-compositor</h3>
+          <div class="mono" style="font-size:12.5px; line-height:2; color:#9AA3BE;">
+            <div>→ GPU device selection</div>
+            <div>→ DRM/KMS, atomic page flips</div>
+            <div>→ Frame loop (epoll-driven)</div>
+            <div>→ Scene graph, window mgmt</div>
+            <div>→ Input routing (libinput)</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+          <div class="mono" style="font-size:10px; color:#5C6690; white-space:nowrap; transform:rotate(-90deg);">WAYLAND SOCKET</div>
+          <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12 H34 M28 5 L36 12 L28 19" fill="none" stroke="#3A4266" stroke-width="2"/></svg>
+        </div>
+
+        <div style="background:#0D1220; border:1px solid #232B45; border-radius:6px; padding:28px;">
+          <div class="mono" style="font-size:11px; color:#5C6690; letter-spacing:1px; margin-bottom:6px;">JVM 2</div>
+          <h3 style="font-size:16px; font-weight:600; color:#F0F3FA; margin:0 0 16px 0;">sabas-shell</h3>
+          <div class="mono" style="font-size:12.5px; line-height:2; color:#9AA3BE;">
+            <div>→ Panel content, widgets</div>
+            <div>→ Workspace &amp; app launching</div>
+            <div>→ Session persistence</div>
+            <div>→ Own VulkanDevice, own GC</div>
+            <div>→ Zero display decisions</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px; background:#0D1220; border:1px solid #232B45; border-radius:6px; padding:24px 28px;">
+        <div class="mono" style="font-size:11px; color:#5C6690; letter-spacing:1px; margin-bottom:16px;">SCANOUT PATH SELECTION — PER OUTPUT, AT HOTPLUG</div>
+        <div class="path-row">
+          <div style="border:1px solid #1E90FF; border-radius:4px; padding:10px 8px; text-align:center; background:rgba(30,144,255,0.08);">
+            <div class="mono" style="font-size:13px; color:#7EC8FF; font-weight:500;">A</div>
+            <div class="mono" style="font-size:10px; color:#7EC8FF; margin-top:4px;">same-GPU · zero-copy</div>
+          </div>
+          <div style="border:1px solid #232B45; border-radius:4px; padding:10px 8px; text-align:center;">
+            <div class="mono" style="font-size:13px; color:#9AA3BE;">B</div>
+            <div class="mono" style="font-size:10px; color:#5C6690; margin-top:4px;">modifier zero-copy</div>
+          </div>
+          <div style="border:1px solid #232B45; border-radius:4px; padding:10px 8px; text-align:center;">
+            <div class="mono" style="font-size:13px; color:#9AA3BE;">C</div>
+            <div class="mono" style="font-size:10px; color:#5C6690; margin-top:4px;">dumb buffer fallback</div>
+          </div>
+          <div style="border:1px solid #232B45; border-radius:4px; padding:10px 8px; text-align:center;">
+            <div class="mono" style="font-size:13px; color:#9AA3BE;">D</div>
+            <div class="mono" style="font-size:10px; color:#5C6690; margin-top:4px;">PRIME import</div>
+          </div>
+          <div style="border:1px solid #232B45; border-radius:4px; padding:10px 8px; text-align:center;">
+            <div class="mono" style="font-size:13px; color:#9AA3BE;">E</div>
+            <div class="mono" style="font-size:10px; color:#5C6690; margin-top:4px;">GPU blit</div>
+          </div>
+          <div style="border:1px solid #232B45; border-radius:4px; padding:10px 8px; text-align:center;">
+            <div class="mono" style="font-size:13px; color:#9AA3BE;">F</div>
+            <div class="mono" style="font-size:10px; color:#5C6690; margin-top:4px;">GBM scanout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTALL / DOWNLOAD -->
+  <div id="install" class="section-pad" style="padding:88px 48px; max-width:1220px; margin:0 auto;">
+    <div class="hero-row" style="display:flex; gap:56px;">
+      <div style="flex:1;">
+        <div class="mono" style="font-size:12px; color:#7EC8FF; letter-spacing:1.5px; margin-bottom:12px;">// GET SABAS OS</div>
+        <h2 class="display" style="font-size:34px; font-weight:700; color:#F6F8FD; margin:0 0 20px 0; letter-spacing:-0.3px;">Boot it, or build it yourself.</h2>
+        <p style="font-size:15px; line-height:1.6; color:#9AA3BE; margin:0 0 28px 0;">The live ISO boots straight into the Sabas compositor and shell. Prefer to build from source or run nested inside your current desktop for development — both are one command.</p>
+        <div style="display:flex; gap:14px; margin-bottom:40px;">
+          <a href="#" class="btn-primary mono" style="padding:13px 24px; border-radius:4px; font-size:14px;">Download Live ISO</a>
+          <a href="#" class="btn-secondary mono" style="padding:13px 24px; border-radius:4px; font-size:14px;">Build from source</a>
+        </div>
+
+        <div class="mono" style="font-size:11px; color:#5C6690; letter-spacing:1px; margin-bottom:10px;">REQUIREMENTS</div>
+        <div class="req-grid" style="font-size:13.5px; color:#9AA3BE; line-height:1.7;">
+          <div>→ Java 25+ (Panama FFM, Vector API)</div>
+          <div>→ Linux kernel 5.x+ (DRM atomic, VRR)</div>
+          <div>→ Vulkan GPU w/ dma-buf import</div>
+          <div>→ libwayland, libinput, libxkbcommon</div>
+        </div>
+      </div>
+
+      <div style="flex:1; max-width:500px;">
+        <div class="mono" style="width:100%; background:#0D1220; border:1px solid #232B45; border-radius:6px; overflow:hidden;">
+          <div style="padding:12px 16px; border-bottom:1px solid #1A2138; font-size:11px; color:#5C6690; letter-spacing:1px;">RUN NESTED (DEVELOPMENT)</div>
+          <div style="padding:20px; font-size:13px; line-height:1.9; color:#9FB4D6;">
+            <div><span style="color:#5C6690;">$</span> mkdir -p ~/.config/sabas</div>
+            <div><span style="color:#5C6690;">$</span> cp config/sabas/*.conf ~/.config/sabas/</div>
+            <div><span style="color:#5C6690;">$</span> java -Dsabas.output=nested \</div>
+            <div style="padding-left:14px;">-jar sabas-os-shell/target/sabas-os-shell.jar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section-pad" style="border-top:1px solid #1A2138; padding:48px 48px; max-width:1220px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:32px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="22" height="22" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="footFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#0B1F6B"/>
+            <stop offset="45%" stop-color="#1E90FF"/>
+            <stop offset="100%" stop-color="#7EC8FF"/>
+          </linearGradient>
+        </defs>
+        <path d="M100,45.7 A65,65 0 0,1 100,158.3 A65,65 0 0,1 100,45.7 Z" fill="none" stroke="url(#footFlame)" stroke-width="7"/>
+        <circle cx="100" cy="102" r="29.02" fill="none" stroke="url(#footFlame)" stroke-width="7"/>
+        <circle cx="100" cy="102" r="18.73" fill="url(#footFlame)"/>
+      </svg>
+      <span class="mono" style="font-size:13px; color:#5C6690;">© 2026 Sabas OS</span>
+    </div>
+    <div class="footer-cols mono" style="font-size:13px; color:#9AA3BE;">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <span style="color:#5C6690;">PROJECT</span>
+        <a href="#architecture">Architecture</a>
+        <a href="#install">Install</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <span style="color:#5C6690;">CODE</span>
+        <a href="#">GitHub</a>
+        <a href="#">License</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <span style="color:#5C6690;">DOCS</span>
+        <a href="#">Getting Started</a>
+        <a href="#">Config Reference</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
